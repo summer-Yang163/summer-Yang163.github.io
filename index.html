@@ -253,6 +253,140 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/04/jquery常用ajax模式/" itemprop="url">
+                  jquery常用ajax模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-04T00:00:57+08:00" content="2016-08-04">
+              2016-08-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/ajax/" itemprop="url" rel="index">
+                    <span itemprop="name">ajax</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>用于博文搬运</p>
+<h3 id="ajax小结"><a href="#ajax小结" class="headerlink" title="ajax小结"></a>ajax小结</h3><ul>
+<li>通常在做项目时与后台的对接会要求发送ajax，在此将我们常用的一个ajax方法模式小结一下</li>
+</ul>
+<hr>
+<h4 id="首先调用ajax：-ajax"><a href="#首先调用ajax：-ajax" class="headerlink" title="首先调用ajax：$.ajax({})"></a>首先调用ajax：$.ajax({})</h4><h4 id="调用数据（传入和传出）"><a href="#调用数据（传入和传出）" class="headerlink" title="调用数据（传入和传出）"></a>调用数据（传入和传出）</h4><pre><code>1.传出的三种数据：url、type、data
+    url:&apos;发给后台需要得到你的ajax的地址，一般是相对应的servlet的urlPatterns+“?type=”+你所要传达到的后台的函数的basketService的名字，这个(?type只是一种传值的方式后面跟着的是参数，如登陆的用户名等，如果跟data一样使用post传值也是一样的，就需要在data对象中再加一组数值，不是特别方便，倾向于用这种)&apos;
+    type:&apos;使用post或者get方法输出ajax&apos;
+    data:&apos;写出你要输送给后台的数据，一般使用键值对的写法&apos;
+  data的举例：
+         var data={name:name_id}
+         //这里的name需要和后台所需要的数字相同，而name_id是你前端所取的值来命名的
+</code></pre><p>   2.传入的数据<br>       success：function(data){}</p>
+<pre><code>此时的data便是我们从后台所获取的数据，通常是json数组，如：
+    * {success:true,mag:&quot;正常返回&quot;}
+
+我们利用var getData=JSON.parse(data);进行解析，得到符合我们期望的数据格式，从而进行相应操作
+</code></pre><h4 id="发送数据成功与否的判断（在获得数据之前）"><a href="#发送数据成功与否的判断（在获得数据之前）" class="headerlink" title="发送数据成功与否的判断（在获得数据之前）"></a>发送数据成功与否的判断（在获得数据之前）</h4><pre><code>ajax的发送有五个步骤，但我们只需要知道有没有成功后台有没有成功返回给我们数值就可以了，即success与error，（success是第四步的）针对传值成功与不成功再使用相应的回调函数。
+</code></pre><hr>
+<h3 id="jquery封装的ajax使用完整代码如下："><a href="#jquery封装的ajax使用完整代码如下：" class="headerlink" title="jquery封装的ajax使用完整代码如下："></a>jquery封装的ajax使用完整代码如下：</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">var data = &#123;name:name&#125;</div><div class="line"></div><div class="line">$.ajax(&#123;</div><div class="line"></div><div class="line">url:&apos;/fittingroom/basketManage?type=updateByBasket_id&apos;,</div><div class="line"></div><div class="line">type:&apos;post&apos;,</div><div class="line"></div><div class="line">data:&apos;data&apos;,</div><div class="line"></div><div class="line">success:function(data)&#123;        //这时的data是后台传回给我的数据了</div><div class="line"></div><div class="line">var getData=JSON.parse(data);  //解析json数组，以一种正常的形式返回，且getData具有success和mag两种属性</div><div class="line"></div><div class="line">if(getData.success)&#123;     //通过后台返回的是true或者false来判断你所要进行的动作</div><div class="line"></div><div class="line">console.log(&quot;this is true&quot;)   //实现你所需要的步骤</div><div class="line"></div><div class="line">&#125;else&#123;</div><div class="line"></div><div class="line">console.log(&quot;this is false&quot;)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;,</div><div class="line"></div><div class="line">error:function()&#123;</div><div class="line"></div><div class="line">console.log( &quot;The transmission is error&quot;)   //错误提醒</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"> &#125;)</div></pre></td></tr></table></figure>
+</code></pre><hr>
+<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>这是之前的一篇自己写的博客，因为hexo博客搭建完成，我希望能将我之前散落在各处的博客收集一下，不过可能每天恢复一些，会加上一些我现在状态的理解，感谢您阅读我的博客，暂时没有开通评论功能，请您见谅</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/03/记一次tomcat在myeclipse使用经验/" itemprop="url">
                   记一次tomcat在myeclipse使用经验
                 </a>
@@ -402,7 +536,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -410,7 +544,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -419,7 +553,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
