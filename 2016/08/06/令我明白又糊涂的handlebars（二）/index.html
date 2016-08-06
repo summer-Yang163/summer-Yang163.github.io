@@ -1,0 +1,641 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="handlebars,模板引擎,前端工具" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.jpg?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="6月25日，寻游json挖下的坑
+心中潜藏的固执终于爆发，因为开始于杨元的博客，固执于每一次渲染开始于循环、结束于循环。进入了一个关于json格式的死循环，还不愿意醒，重复自己模拟json、取json，但是就是不愿意在自己得到的json中去直接查找直接渲染。真是执着于一个不怎么好的实现，还沾沾自喜，认为自己发现了无人的小角落，殊不知是一个路旁的可见底的涵洞，探之无味。
+handlebars函数方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="令我明白又糊涂的handlebars（二）">
+<meta property="og:url" content="http://yoursite.com/2016/08/06/令我明白又糊涂的handlebars（二）/index.html">
+<meta property="og:site_name" content="紫陌于微">
+<meta property="og:description" content="6月25日，寻游json挖下的坑
+心中潜藏的固执终于爆发，因为开始于杨元的博客，固执于每一次渲染开始于循环、结束于循环。进入了一个关于json格式的死循环，还不愿意醒，重复自己模拟json、取json，但是就是不愿意在自己得到的json中去直接查找直接渲染。真是执着于一个不怎么好的实现，还沾沾自喜，认为自己发现了无人的小角落，殊不知是一个路旁的可见底的涵洞，探之无味。
+handlebars函数方法">
+<meta property="og:updated_time" content="2016-08-06T17:13:22.930Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="令我明白又糊涂的handlebars（二）">
+<meta name="twitter:description" content="6月25日，寻游json挖下的坑
+心中潜藏的固执终于爆发，因为开始于杨元的博客，固执于每一次渲染开始于循环、结束于循环。进入了一个关于json格式的死循环，还不愿意醒，重复自己模拟json、取json，但是就是不愿意在自己得到的json中去直接查找直接渲染。真是执着于一个不怎么好的实现，还沾沾自喜，认为自己发现了无人的小角落，殊不知是一个路旁的可见底的涵洞，探之无味。
+handlebars函数方法">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '紫陌于微'
+    }
+  };
+</script>
+
+  <title> 令我明白又糊涂的handlebars（二） | 紫陌于微 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">紫陌于微</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">自我修炼，自我成长</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                令我明白又糊涂的handlebars（二）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-06T22:23:17+08:00" content="2016-08-06">
+              2016-08-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/handlebars/" itemprop="url" rel="index">
+                    <span itemprop="name">handlebars</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="6月25日，寻游json挖下的坑"><a href="#6月25日，寻游json挖下的坑" class="headerlink" title="6月25日，寻游json挖下的坑"></a>6月25日，寻游json挖下的坑</h3><hr>
+<p>心中潜藏的固执终于爆发，因为开始于杨元的博客，固执于每一次渲染开始于循环、结束于循环。进入了一个关于json格式的死循环，还不愿意醒，重复自己模拟json、取json，但是就是不愿意在自己得到的json中去直接查找直接渲染。真是执着于一个不怎么好的实现，还沾沾自喜，认为自己发现了无人的小角落，殊不知是一个路旁的可见底的涵洞，探之无味。</p>
+<h3 id="handlebars函数方法"><a href="#handlebars函数方法" class="headerlink" title="handlebars函数方法"></a>handlebars函数方法</h3><hr>
+<p>前一章对handlebars使用的一些思想进行了介绍，这里是承接它对handlebars的使用进行一些补充，不能保证全面，但是我会坚持不断发现，不断补充，完善handlebars的使用。</p>
+<h4 id="handlebars大的使用前奏-三点"><a href="#handlebars大的使用前奏-三点" class="headerlink" title="handlebars大的使用前奏-三点"></a>handlebars大的使用前奏-三点</h4><p>1.引用库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;jquery/jquery.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;handlebars/handlebars-v3.0.1.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>2.页面数据渲染与实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;script id =&quot;table-template&quot; type=&quot;text/x-handlebars-template&quot;&gt;</div><div class="line">&#123;&#123;data&#125;&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>3.handlebars的内置块表达式（Block helper）</p>
+<ul>
+<li><p>each block helper === 即循环，遍历出列表内容，用this来引用遍历的元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">     &#123;&#123;#each name&#125;&#125;</div><div class="line">     &lt;li&gt;&#123;&#123;this&#125;&#125;&lt;/li&gt;</div><div class="line">     &#123;&#123;/each&#125;&#125;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
+<p> 对应的json</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123; name: [&quot;html&quot;,&quot;css&quot;,&quot;javascript&quot;]&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>if else block helper == 即if/else语句,使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;#if&#125;&#125;、&#123;&#123;#else&#125;&#125; &#123;&#123;/if&#125;&#125;</div></pre></td></tr></table></figure>
+<p> 等进行渲染，如：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;#if list&#125;&#125;</div><div class="line">&lt;ul id=&quot;list&quot;&gt;</div><div class="line">     &#123;&#123;#each list&#125;&#125;</div><div class="line">    &lt;li&gt;&#123;&#123;this&#125;&#125;&lt;/li&gt;</div><div class="line">     &#123;&#123;/each&#125;&#125;</div><div class="line">&lt;/ul&gt;</div><div class="line">&#123;&#123;else&#125;&#125;</div><div class="line">   &lt;p&gt;&#123;&#123;error&#125;&#125;&lt;/p&gt;</div><div class="line">&#123;&#123;/if&#125;&#125;</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var data = &#123;</div><div class="line">         info:[&apos;HTML5&apos;,&apos;CSS3&apos;,&quot;WebGL&quot;],</div><div class="line">         &quot;error&quot;:&quot;数据取出错误&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>unless block helper== 与if相反使用即可，如：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;#unless data&#125;&#125;</div><div class="line">&lt;ul id=&quot;list&quot;&gt;</div><div class="line">  &#123;&#123;#each list&#125;&#125;</div><div class="line">    &lt;li&gt;&#123;&#123;this&#125;&#125;&lt;/li&gt;</div><div class="line">   &#123;&#123;/each&#125;&#125;</div><div class="line">&lt;/ul&gt;</div><div class="line">&#123;&#123;else&#125;&#125;</div><div class="line">  &lt;p&gt;&#123;&#123;error&#125;&#125;&lt;/p&gt;</div><div class="line">&#123;&#123;/unless&#125;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>with block helper == 会在编译的阶段的时候进行context传递和赋值,用with我们可以很简单的进入一个数据集合里面，查找对应的数据很方便，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;entry&quot;&gt;</div><div class="line">   &lt;h1&gt;&#123;&#123;title&#125;&#125;&lt;/h1&gt;</div><div class="line">    &#123;&#123;#with author&#125;&#125;</div><div class="line">    &lt;h2&gt;By &#123;&#123;firstName&#125;&#125; &#123;&#123;lastName&#125;&#125;&lt;/h2&gt;  </div><div class="line">     &#123;&#123;/with&#125;&#125;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">title: &quot;My first post!&quot;,</div><div class="line">author: &#123;</div><div class="line">   firstName: &quot;Charles&quot;,</div><div class="line">   lastName: &quot;Jolley&quot;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="handlebars自定义标签"><a href="#handlebars自定义标签" class="headerlink" title="handlebars自定义标签"></a>handlebars自定义标签</h4><p>  handlebars的自定义标签可以使用在Handlebars模板的任何地方，必须使用Handlebars.registerHelper即注册helper，用一个简单的例子来讲解：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Handlebars.registerHelper(&apos;fullName&apos;, function(person) &#123;</div><div class="line">return person.firstName + &quot; &quot; + person.lastName;&#125;);</div></pre></td></tr></table></figure></p>
+<p>  使用情景：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;post&quot;&gt;</div><div class="line">  &lt;h1&gt;By &#123;&#123;fullName author&#125;&#125;&lt;/h1&gt;</div><div class="line">   &lt;div class=&quot;body&quot;&gt;&#123;&#123;body&#125;&#125;&lt;/div&gt;</div><div class="line">  &lt;h1&gt;Comments&lt;/h1&gt;</div><div class="line"> &#123;&#123;#each comments&#125;&#125;</div><div class="line"> &lt;h2&gt;By &#123;&#123;fullName author&#125;&#125;&lt;/h2&gt;</div><div class="line"> &lt;div class=&quot;body&quot;&gt;&#123;&#123;body&#125;&#125;&lt;/div&gt;</div><div class="line">  &#123;&#123;/each&#125;&#125;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>  数据：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var context = &#123;</div><div class="line">  author: &#123;</div><div class="line">          firstName: &quot;Alan&quot;,</div><div class="line">          lastName: &quot;Johnson&quot;&#125;,</div><div class="line">          body: &quot;I Love Handlebars&quot;,</div><div class="line">          comments: [&#123;</div><div class="line">              author: &#123;</div><div class="line">                     firstName: &quot;Yehuda&quot;,</div><div class="line">                     lastName: &quot;Katz&quot;&#125;,</div><div class="line">                      body: &quot;Me too!&quot;</div><div class="line">              &#125;</div><div class="line">   ]&#125;;</div></pre></td></tr></table></figure></p>
+<p>  结果：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;post&quot;&gt;</div><div class="line">    &lt;h1&gt;By Alan Johnson&lt;/h1&gt;</div><div class="line">    &lt;div class=&quot;body&quot;&gt;I Love Handlebars&lt;/div&gt;</div><div class="line">    &lt;h1&gt;Comments&lt;/h1&gt;</div><div class="line">    &lt;h2&gt;By Yehuda Katz&lt;/h2&gt;</div><div class="line">    &lt;div class=&quot;body&quot;&gt;Me Too!&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>  注：在自定义标签的helper中可以使用this，this是当前的对象。</p>
+<hr>
+<h3 id="handlebars访问路径（Path）"><a href="#handlebars访问路径（Path）" class="headerlink" title="handlebars访问路径（Path）"></a>handlebars访问路径（Path）</h3><p>  handlebars支持路径，可以使用嵌套的路径，能够查找嵌套低于当前上下文的属性：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">.    访问属性</div><div class="line">../  访问父属性</div></pre></td></tr></table></figure></p>
+<p>  如：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  title: &quot;My First Blog Post!&quot;,</div><div class="line">  author: &#123;</div><div class="line">      id: 47,</div><div class="line">      name: &quot;Yehuda Katz&quot;</div><div class="line">   &#125;,</div><div class="line">  body: &quot;My first post. Wheeeee!&quot;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>  访问情况</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;h1&gt;&#123;&#123;author.id&#125;&#125;&lt;/h1&gt;</div><div class="line"> &#123;&#123;#with author&#125;&#125;</div><div class="line"> &lt;h1&gt;&#123;&#123;../title&#125;&#125;&lt;/h1&gt;</div><div class="line"> &#123;&#123;/with&#125;&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="其他注意点"><a href="#其他注意点" class="headerlink" title="其他注意点"></a>其他注意点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;&#125;&#125;与&#123;&#123;&#123;&#125;&#125;&#125;，&#123;&#123;&#125;&#125;会将所有的内容解析并转义，&#123;&#123;&#123;&#125;&#125;&#125;不会对html内容进行操作，这样我们需要的html就可以保全，但是必须保证html中无&quot;&quot;（改成 &apos; &apos;）,还有不能有换行等，这样会报错</div><div class="line">还有与volicity有一个冲突的过程，需要注意。</div></pre></td></tr></table></figure>
+<hr>
+<p>这就是我要说的详细内容，缺少请指正，以便及时更新，及时补充。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/handlebars，前端模板引擎/" rel="tag">#handlebars，前端模板引擎</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/06/令我明白又糊涂的handlebars（一）/" rel="next" title="令我明白又糊涂的handlebars（一）">
+                <i class="fa fa-chevron-left"></i> 令我明白又糊涂的handlebars（一）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="紫陌于微" />
+          <p class="site-author-name" itemprop="name">紫陌于微</p>
+          <p class="site-description motion-element" itemprop="description">凡心所向，素履所往</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#6月25日，寻游json挖下的坑"><span class="nav-number">1.</span> <span class="nav-text">6月25日，寻游json挖下的坑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#handlebars函数方法"><span class="nav-number">2.</span> <span class="nav-text">handlebars函数方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#handlebars大的使用前奏-三点"><span class="nav-number">2.1.</span> <span class="nav-text">handlebars大的使用前奏-三点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#handlebars自定义标签"><span class="nav-number">2.2.</span> <span class="nav-text">handlebars自定义标签</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#handlebars访问路径（Path）"><span class="nav-number">3.</span> <span class="nav-text">handlebars访问路径（Path）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他注意点"><span class="nav-number">4.</span> <span class="nav-text">其他注意点</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">紫陌于微</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
