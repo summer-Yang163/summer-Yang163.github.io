@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/08/07/记一次小伙伴友情支持linux脚本操作/index.html">
 <meta property="og:site_name" content="紫陌于微">
 <meta property="og:description" content="我与linux的前世今生突然很想说一说自己是怎么走向linux的，虽然一直说是某只小伙伴怂恿的，但其实在那之前，面对室友的华丽操作，还有老师的强烈推荐，我是极其动心的，但是因为本身不太懂计算机，也不敢将自己唯一的电脑就这样奉送在自己的手中，所以就在室友大胆尝试的时候默默的看着。一脸羡慕。。。后来尝试了虚拟机，但是因为Y485P也不知怎么被我玩的越来越慢的，也实在hold不住，所以还是离开了linu">
-<meta property="og:updated_time" content="2016-08-07T17:10:37.922Z">
+<meta property="og:updated_time" content="2016-08-08T01:21:04.148Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记一次小伙伴友情支持linux脚本操作">
 <meta name="twitter:description" content="我与linux的前世今生突然很想说一说自己是怎么走向linux的，虽然一直说是某只小伙伴怂恿的，但其实在那之前，面对室友的华丽操作，还有老师的强烈推荐，我是极其动心的，但是因为本身不太懂计算机，也不敢将自己唯一的电脑就这样奉送在自己的手中，所以就在室友大胆尝试的时候默默的看着。一脸羡慕。。。后来尝试了虚拟机，但是因为Y485P也不知怎么被我玩的越来越慢的，也实在hold不住，所以还是离开了linu">
@@ -318,19 +318,21 @@
 <hr>
 <h3 id="脚本使用（当然针对的是maven项目）"><a href="#脚本使用（当然针对的是maven项目）" class="headerlink" title="脚本使用（当然针对的是maven项目）"></a>脚本使用（当然针对的是maven项目）</h3><ul>
 <li><p>前期准备<br>在linux系统中，安装maven，这样才可以继续下列操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">额，脑子有点卡壳，明天再想命令吧</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt install maven</div></pre></td></tr></table></figure>
+<p>在本机中安装maven，并更改配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MAVEN_HOME=/usr/local/maven3</div><div class="line">export MAVEN_HOME</div><div class="line">export PATH=$&#123;PATH&#125;:$&#123;MAVEN_HOME&#125;/bin</div></pre></td></tr></table></figure>
+<p>利用mvn -v验证是否成功。</p>
 </li>
-<li><p>文件放置<br>在本机中，我的文件命名为complie.sh，放置在/usr/local/tools中</p>
-</li>
+<li>文件放置<br>在本机中，我的文件命名为complie.sh，放置在/usr/local/tools中</li>
 <li><p>脚本操作<br>1.寻找想要发布的项目，进入项目文件下，利用命令行：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile xunyou（项目名，看项目pom.xml中的配置） ~/software/apache-tomcat-8.0.33（找到tomcat所在包）</div></pre></td></tr></table></figure>
 <p>编译项目，在tomcat中实现项目发布及打包操作。<br>2.开始运行tomcat，实现项目执行，进入tomcat的bin下，进行./startup.sh操作，实现tomcat开启，这时在浏览器中输入你想要的项目路径，便可以看到摆脱idea后获得的新生。<br>3.当然，有开始的操作，必然有结束的操作，还是一样，进入tomcat的bin下，进行./shutdown.sh操作，结束这场奇幻之旅。</p>
 </li>
 <li><p>脚本含义<br>本来准备查找命令具体解释的，不过已经快一点了，还是先睡觉吧，回头记着添上</p>
 <hr>
-<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>小伙伴友情赞助脚本，小编负责理解和感谢，希望是一篇干货，废话稍多，不过有所感悟终究是极好的。</p>
 </li>
 </ul>
+<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>小伙伴友情赞助脚本，小编负责理解和感谢，希望是一篇干货，废话稍多，不过有所感悟终究是极好的。</p>
 
       
     </div>
