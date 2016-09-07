@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ajax使用,jquery" />
+  <meta name="keywords" content="css布局," />
 
 
 
@@ -84,34 +84,28 @@
 
 
 
-<meta name="description" content="用于博文搬运
-ajax小结
-通常在做项目时与后台的对接会要求发送ajax，在此将我们常用的一个ajax方法模式小结一下
+<meta name="description" content="BFC是什么及相关定义BFC–block formatting context 块格式化上下文,是页面css视觉渲染的一部分，用于决定块盒子的布局及浮动相互影响的一个区域
 
+box:css布局的对象和基本单位;因为一个页面就是由很多的box构成的,而元素的类型和display属性，决定了这个box的类型,即决定了是什么样的Formatting Context,盒子主要有:
 
-首先调用ajax：$.ajax({})调用数据（传入和传出）1.传出的三种数据：url、type、data
-    url:&amp;apos;发给后台需要得到你的ajax的地址，一般是相对应的servlet的urlPatterns+“?type=”+你所要传达到的后台的函数的bas">
+block-level">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jquery常用ajax模式">
-<meta property="og:url" content="http://yoursite.com/2016/08/04/jquery常用ajax模式/index.html">
+<meta property="og:title" content="BFC学习">
+<meta property="og:url" content="http://yoursite.com/2016/09/07/BFC学习/index.html">
 <meta property="og:site_name" content="紫陌于微">
-<meta property="og:description" content="用于博文搬运
-ajax小结
-通常在做项目时与后台的对接会要求发送ajax，在此将我们常用的一个ajax方法模式小结一下
+<meta property="og:description" content="BFC是什么及相关定义BFC–block formatting context 块格式化上下文,是页面css视觉渲染的一部分，用于决定块盒子的布局及浮动相互影响的一个区域
 
+box:css布局的对象和基本单位;因为一个页面就是由很多的box构成的,而元素的类型和display属性，决定了这个box的类型,即决定了是什么样的Formatting Context,盒子主要有:
 
-首先调用ajax：$.ajax({})调用数据（传入和传出）1.传出的三种数据：url、type、data
-    url:&amp;apos;发给后台需要得到你的ajax的地址，一般是相对应的servlet的urlPatterns+“?type=”+你所要传达到的后台的函数的bas">
-<meta property="og:updated_time" content="2016-08-03T16:40:33.358Z">
+block-level">
+<meta property="og:updated_time" content="2016-09-07T07:51:31.140Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jquery常用ajax模式">
-<meta name="twitter:description" content="用于博文搬运
-ajax小结
-通常在做项目时与后台的对接会要求发送ajax，在此将我们常用的一个ajax方法模式小结一下
+<meta name="twitter:title" content="BFC学习">
+<meta name="twitter:description" content="BFC是什么及相关定义BFC–block formatting context 块格式化上下文,是页面css视觉渲染的一部分，用于决定块盒子的布局及浮动相互影响的一个区域
 
+box:css布局的对象和基本单位;因为一个页面就是由很多的box构成的,而元素的类型和display属性，决定了这个box的类型,即决定了是什么样的Formatting Context,盒子主要有:
 
-首先调用ajax：$.ajax({})调用数据（传入和传出）1.传出的三种数据：url、type、data
-    url:&amp;apos;发给后台需要得到你的ajax的地址，一般是相对应的servlet的urlPatterns+“?type=”+你所要传达到的后台的函数的bas">
+block-level">
 
 
 
@@ -129,7 +123,7 @@ ajax小结
   };
 </script>
 
-  <title> jquery常用ajax模式 | 紫陌于微 </title>
+  <title> BFC学习 | 紫陌于微 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +263,7 @@ ajax小结
             
             
               
-                jquery常用ajax模式
+                BFC学习
               
             
           </h1>
@@ -281,30 +275,11 @@ ajax小结
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-04T00:00:57+08:00" content="2016-08-04">
-              2016-08-04
+            <time itemprop="dateCreated" datetime="2016-09-07T11:19:57+08:00" content="2016-09-07">
+              2016-09-07
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ajax/" itemprop="url" rel="index">
-                    <span itemprop="name">ajax</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -328,28 +303,45 @@ ajax小结
       
 
       
-        <p>用于博文搬运</p>
-<h3 id="ajax小结"><a href="#ajax小结" class="headerlink" title="ajax小结"></a>ajax小结</h3><ul>
-<li>通常在做项目时与后台的对接会要求发送ajax，在此将我们常用的一个ajax方法模式小结一下</li>
+        <h3 id="BFC是什么及相关定义"><a href="#BFC是什么及相关定义" class="headerlink" title="BFC是什么及相关定义"></a>BFC是什么及相关定义</h3><p>BFC–block formatting context 块格式化上下文,是页面css视觉渲染的一部分，用于决定块盒子的布局及浮动相互影响的一个区域</p>
+<ul>
+<li><p>box:css布局的对象和基本单位;因为一个页面就是由很多的box构成的,而元素的类型和display属性，决定了这个box的类型,即决定了是什么样的Formatting Context,盒子主要有:</p>
+<ol>
+<li>block-level box:<br> display属性为block、list-item、table的元素，会生成block-level box。并且参与block formatting context;</li>
+<li>inline-level box:<br> display属性为inline,inline-block,inline-table的元素,会生成inline-level box。并且参与inline formatting context；</li>
+<li>run-in box:css3才有</li>
+</ol>
+</li>
+<li><p>Formatting context<br>是页面的一块渲染区域，并且有一套渲染规则,它决定了其子元素将如何定位,以及和其他元素的关系和相互作用。常见的有</p>
+<ol>
+<li>css2.1:<br> BFC – block formatting context<br> IFC – inline formatting context</li>
+<li>css3<br> GFC – GridLayout Formatting Contexts<br> FFC – Flex Formatting Contexts</li>
+</ol>
+</li>
 </ul>
 <hr>
-<h4 id="首先调用ajax：-ajax"><a href="#首先调用ajax：-ajax" class="headerlink" title="首先调用ajax：$.ajax({})"></a>首先调用ajax：$.ajax({})</h4><h4 id="调用数据（传入和传出）"><a href="#调用数据（传入和传出）" class="headerlink" title="调用数据（传入和传出）"></a>调用数据（传入和传出）</h4><pre><code>1.传出的三种数据：url、type、data
-    url:&apos;发给后台需要得到你的ajax的地址，一般是相对应的servlet的urlPatterns+“?type=”+你所要传达到的后台的函数的basketService的名字，这个(?type只是一种传值的方式后面跟着的是参数，如登陆的用户名等，如果跟data一样使用post传值也是一样的，就需要在data对象中再加一组数值，不是特别方便，倾向于用这种)&apos;
-    type:&apos;使用post或者get方法输出ajax&apos;
-    data:&apos;写出你要输送给后台的数据，一般使用键值对的写法&apos;
-  data的举例：
-         var data={name:name_id}
-         //这里的name需要和后台所需要的数字相同，而name_id是你前端所取的值来命名的
-</code></pre><p>   2.传入的数据<br>       success：function(data){}</p>
-<pre><code>此时的data便是我们从后台所获取的数据，通常是json数组，如：
-    * {success:true,mag:&quot;正常返回&quot;}
-
-我们利用var getData=JSON.parse(data);进行解析，得到符合我们期望的数据格式，从而进行相应操作
-</code></pre><h4 id="发送数据成功与否的判断（在获得数据之前）"><a href="#发送数据成功与否的判断（在获得数据之前）" class="headerlink" title="发送数据成功与否的判断（在获得数据之前）"></a>发送数据成功与否的判断（在获得数据之前）</h4><pre><code>ajax的发送有五个步骤，但我们只需要知道有没有成功后台有没有成功返回给我们数值就可以了，即success与error，（success是第四步的）针对传值成功与不成功再使用相应的回调函数。
-</code></pre><hr>
-<h3 id="jquery封装的ajax使用完整代码如下："><a href="#jquery封装的ajax使用完整代码如下：" class="headerlink" title="jquery封装的ajax使用完整代码如下："></a>jquery封装的ajax使用完整代码如下：</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">var data = &#123;name:name&#125;</div><div class="line"></div><div class="line">$.ajax(&#123;</div><div class="line"></div><div class="line">url:&apos;/fittingroom/basketManage?type=updateByBasket_id&apos;,</div><div class="line"></div><div class="line">type:&apos;post&apos;,</div><div class="line"></div><div class="line">data:&apos;data&apos;,</div><div class="line"></div><div class="line">success:function(data)&#123;        //这时的data是后台传回给我的数据了</div><div class="line"></div><div class="line">var getData=JSON.parse(data);  //解析json数组，以一种正常的形式返回，且getData具有success和mag两种属性</div><div class="line"></div><div class="line">if(getData.success)&#123;     //通过后台返回的是true或者false来判断你所要进行的动作</div><div class="line"></div><div class="line">console.log(&quot;this is true&quot;)   //实现你所需要的步骤</div><div class="line"></div><div class="line">&#125;else&#123;</div><div class="line"></div><div class="line">console.log(&quot;this is false&quot;)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;,</div><div class="line"></div><div class="line">error:function()&#123;</div><div class="line"></div><div class="line">console.log( &quot;The transmission is error&quot;)   //错误提醒</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"> &#125;)</div></pre></td></tr></table></figure>
-</code></pre><hr>
-<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>这是之前的一篇自己写的博客，因为hexo博客搭建完成，我希望能将我之前散落在各处的博客收集一下，不过可能每天恢复一些，会加上一些我现在状态的理解，感谢您阅读我的博客，暂时没有开通评论功能，请您见谅</p>
+<h3 id="BFC实现了怎样的布局"><a href="#BFC实现了怎样的布局" class="headerlink" title="BFC实现了怎样的布局"></a>BFC实现了怎样的布局</h3><ul>
+<li>内部的box会在垂直方向,一个接一个地放置</li>
+<li>Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠</li>
+<li>每个元素的margin box的左边，与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。</li>
+<li>BFC的区域不会与float box重叠（不是特别理解这句话）</li>
+<li>BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素</li>
+<li>计算BFC的高度时，浮动元素也参与计算</li>
+</ul>
+<hr>
+<h3 id="哪些元素会生成BFC"><a href="#哪些元素会生成BFC" class="headerlink" title="哪些元素会生成BFC"></a>哪些元素会生成BFC</h3><ul>
+<li>根元素</li>
+<li>float不为none</li>
+<li>position 为absolute或fixed</li>
+<li>display为inline-block,table-cell,table-caption,flex,inline-flex</li>
+<li>overflow不为visible<br>&lt;!– - 行内块inline-blocks(元素的display:inline-block)</li>
+<li>表格单元格(元素的display:table-cell,HTML表格单元格默认属性)</li>
+<li>表格标题(元素的display:table-caption,HTML表格标题默认属性)</li>
+<li>overflow的值不为visible的元素</li>
+<li>弹性盒子flex boxes(元素的display:flex或inline-flex) –&gt;</li>
+</ul>
+<hr>
+<h3 id="BFC的作用"><a href="#BFC的作用" class="headerlink" title="BFC的作用"></a>BFC的作用</h3><p>-　1. 自适应两栏布局<br>-　2. 清除内部浮动<br>-3. 防止垂直 margin 重叠</p>
 
       
     </div>
@@ -371,9 +363,7 @@ ajax小结
       
         <div class="post-tags">
           
-            <a href="/tags/ajax/" rel="tag">#ajax</a>
-          
-            <a href="/tags/jquery/" rel="tag">#jquery</a>
+            <a href="/tags/css布局/" rel="tag">#css布局</a>
           
         </div>
       
@@ -382,17 +372,13 @@ ajax小结
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/03/记一次tomcat在myeclipse使用经验/" rel="next" title="记一次tomcat在myeclipse使用经验">
-                <i class="fa fa-chevron-left"></i> 记一次tomcat在myeclipse使用经验
+              <a href="/2016/08/31/三年小结/" rel="next" title="三年小结">
+                <i class="fa fa-chevron-left"></i> 三年小结
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/05/gulp使用简介/" rel="prev" title="gulp使用简介">
-                gulp使用简介 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -506,7 +492,7 @@ ajax小结
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ajax小结"><span class="nav-number">1.</span> <span class="nav-text">ajax小结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#首先调用ajax：-ajax"><span class="nav-number">1.1.</span> <span class="nav-text">首先调用ajax：$.ajax({})</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用数据（传入和传出）"><span class="nav-number">1.2.</span> <span class="nav-text">调用数据（传入和传出）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发送数据成功与否的判断（在获得数据之前）"><span class="nav-number">1.3.</span> <span class="nav-text">发送数据成功与否的判断（在获得数据之前）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jquery封装的ajax使用完整代码如下："><span class="nav-number">2.</span> <span class="nav-text">jquery封装的ajax使用完整代码如下：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备注"><span class="nav-number">3.</span> <span class="nav-text">备注</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#BFC是什么及相关定义"><span class="nav-number">1.</span> <span class="nav-text">BFC是什么及相关定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BFC实现了怎样的布局"><span class="nav-number">2.</span> <span class="nav-text">BFC实现了怎样的布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哪些元素会生成BFC"><span class="nav-number">3.</span> <span class="nav-text">哪些元素会生成BFC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BFC的作用"><span class="nav-number">4.</span> <span class="nav-text">BFC的作用</span></a></li></ol></div>
             
           </div>
         </section>
